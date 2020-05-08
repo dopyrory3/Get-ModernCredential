@@ -131,7 +131,8 @@ namespace psAuth
                 {
                     // Create a new PSCredential
                     SecureString secure = new SecureString();
-                    char[] chars = passwordBuf.ToString().ToCharArray();
+                    char[] chars = new char[passwordBuf.Length];
+                    passwordBuf.CopyTo(0, chars, 0, passwordBuf.Length);
                     foreach (char ch in chars)
                     {
                         secure.AppendChar(ch);
